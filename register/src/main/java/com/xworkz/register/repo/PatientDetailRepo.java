@@ -3,7 +3,7 @@ package com.xworkz.register.repo;
 import java.util.List;
 import java.util.Optional;
 
-
+import com.xworkz.register.dto.ImageDTO;
 import com.xworkz.register.dto.PatientDetailDTO;
 
 public interface PatientDetailRepo {
@@ -20,4 +20,5 @@ public interface PatientDetailRepo {
 	List<PatientDetailDTO> findByEmail(String email);
 
 	List<PatientDetailDTO> findByMobileNo(long mobileNo);
+	
 }

@@ -16,4 +16,6 @@ public interface PatientDetailService {
 	boolean findByEmail(String email);
 
 	boolean findByMobileNo(long mobileNo);
+	
+	
 }

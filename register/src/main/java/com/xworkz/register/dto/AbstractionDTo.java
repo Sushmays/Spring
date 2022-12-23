@@ -16,5 +16,6 @@ public class AbstractionDTo {
 	
 	private String createdBy;
 	private LocalDateTime createdDataTime;
+	
 
 }

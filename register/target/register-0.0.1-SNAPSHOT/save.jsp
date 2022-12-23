@@ -80,7 +80,7 @@ label {
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td><img alt="Nothing" src="save/files/${dto.fileName}/?contentType=${dto.contentType}" width="100" height="150"> </td>
+      <td><img alt="Nothing" src="save/files/${dto.fileName}" width="100" height="150"> </td>
       <td>${dto.name }</td>
       <td>${dto.email }</td>
       <td>${dto.age }</td>

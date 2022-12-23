@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.xworkz.register.dto.PatientDetailDTO;
 
@@ -21,7 +22,7 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 	private EntityManagerFactory factory;
 
 	public PatientDetailRepoImpl() {
-		System.out.println("Created PatientDetailRepoImpl in repo");
+		System.out.println("Created PatientDetailRepoImpl");
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
-			System.out.println("Check "+dto.getCreatedBy() +" "+dto.getCreatedDataTime());
+			System.out.println("Check " + dto.getCreatedBy() + " " + dto.getCreatedDataTime());
 			transaction.begin();
 			manager.persist(dto);
 			transaction.commit();
@@ -44,7 +45,8 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 	}
 
 	@Override
-	public Optional<List<PatientDetailDTO>> findByNameGreaterThanAgeOrLesserThanAge(String name,int greaterThanAge, int lesserThanAge) {
+	public Optional<List<PatientDetailDTO>> findByNameGreaterThanAgeOrLesserThanAge(String name, int greaterThanAge,
+			int lesserThanAge) {
 		System.out.println("Running findByName method");
 		EntityManager manager = factory.createEntityManager();
 		try {
@@ -58,9 +60,9 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 		} finally {
 			manager.close();
 		}
-		return PatientDetailRepo.super.findByNameGreaterThanAgeOrLesserThanAge(name,greaterThanAge,lesserThanAge);
+		return PatientDetailRepo.super.findByNameGreaterThanAgeOrLesserThanAge(name, greaterThanAge, lesserThanAge);
 	}
-	
+
 	public Optional<List<PatientDetailDTO>> findByQuery(String query) {
 		EntityManager manager = factory.createEntityManager();
 		try {
@@ -72,7 +74,7 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 			manager.close();
 		}
 		return PatientDetailRepo.super.findByQuery(query);
-	}	
+	}
 
 	@Override
 	public List<PatientDetailDTO> findByEmail(String email) {
@@ -95,7 +97,7 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 			manager.close();
 		}
 		return null;
-		
+
 	}
 
 	@Override
@@ -120,4 +122,5 @@ public class PatientDetailRepoImpl implements PatientDetailRepo {
 		}
 		return null;
 	}
+
 }

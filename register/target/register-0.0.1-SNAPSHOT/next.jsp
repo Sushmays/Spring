@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,8 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
 <title>Register Form</title>
-</head>
+
 <style>
 
 body {
@@ -29,6 +29,9 @@ label {
 
 </style>
 
+
+
+</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  <a class="navbar-brand" href="#">
@@ -42,21 +45,25 @@ label {
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       
-     </ul>
-  </div> 
+     </ul> 
    <div>
-		<a href="index.jsp" style="color:balck;">Home</a>
+		<a href="index.jsp" style="color:black;">Home</a>
 		</div>
   </div>
 </nav>
-
-<h1>Patient Details</h1>
-<div>
-<p class="text-success">${message}</p>
-</div>
 <br>
-<h2>Your Id :${dto.id}</h2>
-</br>
+<br>
+<br>
+
+<form action="save" method="get">
+Name : <input type="text" name="name" value="${dto.name}"/>
+AgeGreaterThan : <input type="number" name="greaterThanAge" value="0" />
+AgeLesserThan : <input type="number" name="lesserThanAge" value="0" />
+
+<input type="submit" value="Search" class="btn btn-dark"/>
+
+
+</form>
 
 <div class="page">
 <table class="table table-bordered table-striped">
@@ -78,24 +85,27 @@ label {
     </tr>
   </thead>
   <tbody>
+  <c:forEach items="${list}" var="dto">
     <tr>
-      <th scope="row">1</th>
-      <td><img alt="Nothing" src="save/files/${dto.fileName}/?contentType=${dto.contentType}" width="100" height="150"> </td>
-      <td>${dto.name }</td>
-      <td>${dto.email }</td>
-      <td>${dto.age }</td>
-      <td>${dto.mobileNo }</td>
-      <td>${dto.gender }</td>
-      <td>${dto.idProof }</td>
-      <td>${dto.idValue }</td>
-      <td>${dto.BPLCard }</td>
-      <td>${dto.insurance }</td>
-      <td>${dto.createdBy }</td>
-      <td>${dto.createdDataTime }</td>
+      <th scope="row">${dto.id}</th>
+      <td><img alt="Nothing" src="save/files/${dto.fileName}" width="100" height="150"> </td>
+      <td>${dto.name}</td>
+      <td>${dto.email}</td>
+      <td>${dto.age}</td>
+      <td>${dto.mobileNo}</td>
+      <td>${dto.gender}</td>
+      <td>${dto.idProof}</td>
+      <td>${dto.idValue}</td>
+      <td>${dto.BPLCard}</td>
+      <td>${dto.insurance}</td>
+      <td>${dto.createdBy}</td>
+      <td>${dto.createdDataTime}</td>
     </tr>
-    </tbody>
-    </table>
+    </c:forEach>
+ </tbody> 
+ </table> 
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

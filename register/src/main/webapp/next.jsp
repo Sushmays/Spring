@@ -9,6 +9,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>Register Form</title>
+
+<style>
+
+body {
+	text-align: center;
+	padding-top: 15px;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+label {
+	display: inline-block;
+	width: 80px;
+}
+.page {
+	padding: 8%;
+}
+
+</style>
+
+
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,21 +51,23 @@
 		</div>
   </div>
 </nav>
+<br>
+<br>
+<br>
 
 <form action="save" method="get">
 Name : <input type="text" name="name" value="${dto.name}"/>
-AgeGreaterThan :<input type="number" name="greaterThanAge" value="0" />
+AgeGreaterThan : <input type="number" name="greaterThanAge" value="0" />
 AgeLesserThan : <input type="number" name="lesserThanAge" value="0" />
 
-<div>
 <input type="submit" value="Search" class="btn btn-dark"/>
-</div>
-</form>
 
-<table class="table">
-  <thead>
+<div class="page">
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark-50">
     <tr>
       <th scope="col">Id</th>
+      <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Age</th>
@@ -61,6 +85,7 @@ AgeLesserThan : <input type="number" name="lesserThanAge" value="0" />
   <c:forEach items="${list}" var="dto">
     <tr>
       <th scope="row">${dto.id}</th>
+      <td><img alt="Nothing" src="save/files/${dto.fileName}/?contentType=${dto.contentType}" width="100" height="150"> </td>
       <td>${dto.name}</td>
       <td>${dto.email}</td>
       <td>${dto.age}</td>
@@ -76,6 +101,11 @@ AgeLesserThan : <input type="number" name="lesserThanAge" value="0" />
     </c:forEach>
  </tbody> 
  </table> 
+</div>
+
+
+</form>
+
 
 
 
